@@ -4,7 +4,7 @@ public class Colony {
 	
 	private String name;
 	public ArrayList<Colonist> colonists = new ArrayList<Colonist>();
-	public ArrayList<Object> stock = new ArrayList<Object>();
+	public ArrayList<Item> stock = new ArrayList<Item>();
 	private int population;
 	private int wealth;
 	private int happiness;
@@ -17,8 +17,8 @@ public class Colony {
 	}
 	
 	public Colony(String n, int p) {
-		this.name = n;
-		this.population = p;
+		this.name = setName(n);
+		this.population = setPopulation(p);
 		for(int i=0; i<p; i++) {
 			colonists.add(new Colonist());
 		}
@@ -26,19 +26,16 @@ public class Colony {
 		this.happiness = calculateWealth();	
 	}
 	
-	// make a calculate happiness formula that takes into account safety (in numbers), defensive, food amount, power, etc.
 	public int calculateHappiness() {
-		happiness = population/(1);
+		happiness = 0;
 		return happiness;
 	}
 	
-	// Wealth will be calculated by tallying up the things found in the colony that they "loot" from their surroundings.
-	// WEATLTH = POPULATION / (VALUE OF INVENTORY + VALUE OF RESOURCES + VALUE OF OCCUPATIONS)
 	public int calculateWealth() {
-		wealth = population/(1);
+		wealth = 0;
 		return wealth;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -64,11 +61,11 @@ public class Colony {
 	}
 	
 	public void setHappiness(int happiness) {
-		this.happiness = happiness;
+		this.happiness = calculateHappiness();
 	}
 	
 	public void setWealth(int wealth) {
-		this.wealth = wealth;
+		this.wealth = calculateWealth();
 	}
 	
 }
