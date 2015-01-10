@@ -9,10 +9,10 @@ public class Colonist {
 	private Occupation occupation; // A colonist's occupation was the job they held before the outbreak.
 	private int occupationTier;
 	private Job job; // A colonist's job is the current role the colonist holds in the colony.
-	private ArrayList<Object> posessions = new ArrayList<Object>();
+	private ArrayList<Item> posessions = new ArrayList<Item>();
 	private String status;
 	private String gender;
-	private Ailment ailments;
+	private Ailment ailment;
 	private boolean infected;
 
 	public Colonist() {
@@ -25,7 +25,7 @@ public class Colonist {
 		} else {
 			setGender("Female");
 		}
-		setAilments(Ailment.HEALTHY);
+		setAilment(Ailment.HEALTHY);
 		setInfected(false);
 		if(age >= 18) {
 			occupation = Occupation.values()[ThreadLocalRandom.current().nextInt(1,Occupation.values().length-1)];
@@ -34,7 +34,17 @@ public class Colonist {
 			occupation = Occupation.STUDENT;
 		}
 	}
-	
+	public void exposeToAilment(Ailment a){
+		if(this.health < a.getInfectivity()){
+			if(this.ailment == Ailment.HEALTHY)
+				this.setAilment(a);
+			else{
+				if(this.ailment.getInfectivity() < a.getInfectivity())
+					this.setAilment(a);
+				else{}
+			}
+		}
+	}
 	public double getHealth() {
 		return this.health;
 	}
@@ -96,11 +106,11 @@ public class Colonist {
 	}
 
 	public Ailment getAilments() {
-		return ailments;
+		return ailment;
 	}
 
-	public void setAilments(Ailment ailments) {
-		this.ailments = ailments;
+	public void setAilment(Ailment ailment) {
+		this.ailment = ailment;
 	}
 
 	public boolean isInfected() {
@@ -118,7 +128,7 @@ public class Colonist {
 	public void setOccupationTier(int occupationTier) {
 		this.occupationTier = occupationTier;
 	}
-	public void addPossessObject(Object item){
+	public void addPossessObject(Item item){
 		this.posessions.add(item);
 	}
 }
