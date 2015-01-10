@@ -19,12 +19,11 @@ public class Colony {
 	public Colony(String n, int p) {
 		this.name = n;
 		this.population = p;
-		for(int i=1; i<=p; i++) {
+		for(int i=0; i<p; i++) {
 			colonists.add(new Colonist());
 		}
-		this.happiness = calculateHappiness();
 		this.wealth = calculateWealth();
-		
+		this.happiness = calculateWealth();	
 	}
 	
 	// make a calculate happiness formula that takes into account safety (in numbers), defensive, food amount, power, etc.
