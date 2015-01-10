@@ -4,7 +4,7 @@ public class Colony {
 	
 	private String name;
 	public ArrayList<Colonist> colonists = new ArrayList<Colonist>();
-	public ArryList<Object> stock = new ArrayList<Object>();
+	public ArrayList<Object> stock = new ArrayList<Object>();
 	private int population;
 	private int wealth;
 	private int happiness;

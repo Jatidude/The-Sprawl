@@ -1,3 +1,3 @@
-public Interface HavingStatus {
+public interface HavingStatus {
 	
 }

@@ -12,21 +12,21 @@ public class Colonist {
 	private ArrayList<Object> posessions = new ArrayList<Object>();
 	private String status;
 	private String gender;
-	private Ailments ailments;
+	private Ailment ailments;
 	private boolean infected;
 
 	public Colonist() {
 		health = 100.0;
-		age = ThreadLocalRandom.current().nextInt(10,60)
+		age = ThreadLocalRandom.current().nextInt(10,60);
 		name = Name.values()[ThreadLocalRandom.current().nextInt(1,Name.values().length-1)];
-		status = "Idle"
-		if(name.LocationInNAMEenum <= 50) {
-			gender = "Male";
+		status = "Idle";
+		if(name.ordinal() <= 50) {
+			setGender("Male");
 		} else {
-			gender = "Female";
+			setGender("Female");
 		}
-		ailments = Ailments.HEALTHY;
-		infected = false;
+		setAilments(Ailment.HEALTHY);
+		setInfected(false);
 		if(age >= 18) {
 			occupation = Occupation.values()[ThreadLocalRandom.current().nextInt(1,Occupation.values().length-1)];
 		}
@@ -87,8 +87,38 @@ public class Colonist {
 		this.status = status;
 	}
 	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Ailment getAilments() {
+		return ailments;
+	}
+
+	public void setAilments(Ailment ailments) {
+		this.ailments = ailments;
+	}
+
+	public boolean isInfected() {
+		return infected;
+	}
+
 	public void setInfected(boolean infected) {
 		this.infected = infected;
 	}
-	
+
+	public int getOccupationTier() {
+		return occupationTier;
+	}
+
+	public void setOccupationTier(int occupationTier) {
+		this.occupationTier = occupationTier;
+	}
+	public void addPossessObject(Object item){
+		this.posessions.add(item);
+	}
 }

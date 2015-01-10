@@ -1,3 +1,3 @@
-public Class GameEntitiy extends HavingStatus {
+public class GameEntitiy implements HavingStatus {
 
 }
