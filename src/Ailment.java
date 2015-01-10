@@ -26,6 +26,8 @@ public enum Ailment {
 		PLAGUE.name = "the Black Plague";
 		SMALLPOX.name = "the Red Plague";
 	}
-	
+	public String getName(){
+		return name;
+	}
 	
 }

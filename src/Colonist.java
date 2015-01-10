@@ -35,8 +35,15 @@ public class Colonist {
 		}
 	}
 	public void exposeToAilment(Ailment a){
-		if(this.health < a.getInfectivity())
-			this.setAilment(a);
+		if(this.health < a.getInfectivity()){
+			if(this.ailment == Ailment.HEALTHY)
+				this.setAilment(a);
+			else{
+				if(this.ailment.getInfectivity() < a.getInfectivity())
+					this.setAilment(a);
+				else{}
+			}
+		}
 	}
 	public double getHealth() {
 		return this.health;
