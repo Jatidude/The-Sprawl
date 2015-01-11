@@ -8,6 +8,7 @@ public class Caravan {
 	ArrayList<Item> stock = new ArrayList<Item>();
 	
 	public Caravan(Colonist c) {
+		status = setStatus("Idle");
 		this.addColonist(c); // A caravan needs at least one caravaneer to exist.
 	}
 	
@@ -16,7 +17,7 @@ public class Caravan {
 		this.caravansary.get(this.caravansary.size()-1).setJob(Job.CARAVANEER);
 		this.caravansary.get(this.caravansary.size()-1).setStatus("In Caravan");
 	}
-	
+
 	public void removePerson(int a){
 		caravansary.remove(a);
 	}
@@ -33,6 +34,10 @@ public class Caravan {
 	public void embark(Colony destination) {
 		this.destination = destination;
 		this.status = "En route to " + this.destination.getName();
+	}
+
+	public String getDestination() {
+		return destination;
 	}
 	
 	public String getStatus() {
