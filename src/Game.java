@@ -1,4 +1,3 @@
-// The Sprawl Version 0.020
 // Nick Hemann, Evan Prince, Jacob Timme, Connor Slamowitz, & Josh Westhoven
 
 /* To Be Completed:

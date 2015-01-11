@@ -11,9 +11,12 @@ public class Colony {
 	
 	public Colony() {
 		this.name = "The Colony";
-		this.population = 0;
-		this.wealth = 0;
-		this.happiness = population;
+		this.population = 1;
+		for(int i=0; i<p; i++) {
+			colonists.add(new Colonist());
+		}
+		this.wealth = calculateWealth();
+		this.happiness = calculateHappiness();
 	}
 	
 	public Colony(String n, int p) {
@@ -23,7 +26,7 @@ public class Colony {
 			colonists.add(new Colonist());
 		}
 		this.wealth = calculateWealth();
-		this.happiness = calculateWealth();	
+		this.happiness = calculateHappiness();	
 	}
 	
 	public int calculateHappiness() {
