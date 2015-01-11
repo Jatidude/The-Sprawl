@@ -13,5 +13,3 @@ MATHEMATICIAN, MUSICIAN,
 SOLDIER, STUDENT, SURGEON, 
 TEACHER, 
 }
-
-// 4 Tiers of occupation. Tier 4 = +4, Tier 3 = +3, 

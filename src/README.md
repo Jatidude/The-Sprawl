@@ -1,2 +1,2 @@
 # The-Sprawl
-Zombie survival strategy
+The Sprawl is a zombie turn-based survival strategy.
