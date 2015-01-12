@@ -5,7 +5,7 @@ public class Caravan {
 	private Colony destination;
 	private String status;
 	ArrayList<Colonist> caravansary = new ArrayList<Colonist>();
-	ArrayList<Object> inventory = new ArrayList<Object>();
+	ArrayList<Item> inventory = new ArrayList<Item>();
 	
 	public Caravan(Colonist c) {
 		this.addColonist(c);
@@ -16,9 +16,11 @@ public class Caravan {
 		this.caravansary.get(this.caravansary.size()-1).setJob(Job.CARAVANEER);
 		this.caravansary.get(this.caravansary.size()-1).setStatus("In Caravan");
 	}
+	
 	public void removePerson(int a){
 		caravansary.remove(a);
 	}
+	
 	public String toString(){
 		String ans = "";
 		for(Colonist a : caravansary){
