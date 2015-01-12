@@ -9,7 +9,7 @@ public class Colonist {
 	private Occupation occupation; // A colonist's occupation was the job they held before the outbreak.
 	private int occupationTier;
 	private Job job; // A colonist's job is the current role the colonist holds in the colony.
-	private ArrayList<Item> posessions = new ArrayList<Item>();
+	private ArrayList<Items.Item> posessions = new ArrayList<Items.Item>();
 	private String status;
 	private String gender;
 	private Ailment ailment;
@@ -128,7 +128,7 @@ public class Colonist {
 	public void setOccupationTier(int occupationTier) {
 		this.occupationTier = occupationTier;
 	}
-	public void addPossessObject(Item item){
-		this.posessions.add(item);
+	public void addPossessObject(Items.Item Item){
+		this.posessions.add(Item);
 	}
 }
