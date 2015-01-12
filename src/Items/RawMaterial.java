@@ -1,3 +1,4 @@
+package Items;
 public enum RawMaterial implements Item {
 	WOOD, STONE, METAL, HIDE;
 	
