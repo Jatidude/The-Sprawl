@@ -13,6 +13,7 @@ public enum Ailment {
 		SMALLPOX.infectivity = 80.0;
 		GANGRENE.infectivity = 70.0;
 	}
+
 	public double getInfectivity(){
 		return infectivity;
 	}
@@ -20,14 +21,15 @@ public enum Ailment {
 	private String name;
 	
 	static {
-		HEALTHY.name = "no diseases";
-		FLU.name = "the Flu";
+		HEALTHY.name = "Healthy!";
+		FLU.name = "The Flu";
 		DYSENTERY.name = "the bloody Flux";
 		MALARIA.name = "the ague";
 		PLAGUE.name = "the Black Plague";
 		SMALLPOX.name = "the Red Plague";
 		GANGRENE.name = "Ergotism";
 	}
+
 	public String getName(){
 		return name;
 	}

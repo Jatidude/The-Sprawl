@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 public class Room {
 
 	private String name;
+	private ArrayList<Item> contents = new ArrayList<Item>();
 
 	public Room() {
-		setName("Unknown Room");
+		setName("Empty Room");
 	}
 
 	public Room(String s) {

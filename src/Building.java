@@ -2,11 +2,16 @@ import java.util.ArrayList;
 
 public class Building {
 
+	private String name;
 	private ArrayList<Room> rooms = new ArrayList<Room>();
-	private Room currentRoom = null;
+	// private Room currentRoom = null;
 
 	public Building() {
+		name = "Unknown Building";
+	}
 
+	public Building(String s) {
+		setName(s);
 	}
 
 	public ArrayList<Room> getRooms() {
