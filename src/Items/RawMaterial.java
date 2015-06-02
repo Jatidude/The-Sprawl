@@ -1,17 +1,17 @@
 package Items;
+
 public enum RawMaterial implements Item {
-	WOOD, STONE, METAL, HIDE;
+	LUMBER, STONES;
 	
-	public String name;
+	private String name;
 	
 	static {
-		WOOD.name = "Wood Pile";
-		STONE.name = "Stone Pile";
-		METAL.name = "Metal Lumps";
-		HIDE.name = "Hide";
+		LUMBER.name = "Lumber";
+		STONES.name = "Stones";
 	}
-
+	
 	public String getName() {
 		return name;
 	}
+
 }

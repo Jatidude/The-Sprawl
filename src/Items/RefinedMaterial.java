@@ -1,22 +1,16 @@
 package Items;
 
 public enum RefinedMaterial implements Item {
-	LUMBER, COPPER, TIN, IRON, GOLD, STEEL, COAL, GRAVEL;
+	STEEL;
 	
-	public String name;
+	private String name;
 	
 	static {
-		LUMBER.name = "Lumber";
-		COPPER.name = "Copper Ingot";
-		TIN.name = "Tin Ingot";
-		IRON.name = "Iron Ingot";
-		GOLD.name = "Gold Ingot";
-		STEEL.name = "Steel Ingot";
-		COAL.name = "Coal Lump";
-		GRAVEL.name = "Gravel Bag";
+		STEEL.name = "Steel";
 	}
-
+	
 	public String getName() {
 		return name;
 	}
+
 }

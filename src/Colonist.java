@@ -1,117 +1,144 @@
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Collections;
 
 public class Colonist {
-	
+
 	private double health;
 	private int age;
-	private Name name;
-	private Occupation occupation; // A colonist's occupation was the job they held before the outbreak.
-	private int occupationTier;
-	private Job job; // A colonist's job is the current role the colonist holds in the colony.
-	private ArrayList<Items.Item> posessions = new ArrayList<Items.Item>();
 	private String status;
-	private String gender;
-	private Ailment ailment;
+	private Name name;
+	private Sex sex;
+	private Occupation occupation; // A colonist's occupation was the job they held before the outbreak.
+	private Job job; // A colonist's job is the current role the colonist holds in the colony.
+	private ArrayList<Ailment> ailments = new ArrayList<Ailment>();
+	private ArrayList<Items.Item> inventory = new ArrayList<Items.Item>();
 	private boolean infected;
-
+	
 	public Colonist() {
-		health = 100.0;
-		age = ThreadLocalRandom.current().nextInt(10,60);
-		name = Name.values()[ThreadLocalRandom.current().nextInt(1,Name.values().length-1)];
-		status = "Idle";
-		if(name.ordinal() <= 50) {
-			setGender("Male");
+		setHealth(100.0);
+		setAge(((int)(Math.random()*41))+18);
+		setStatus("Idle");
+		setName(Name.values()[((int)(Math.random()*101))]);
+		if(getName().ordinal() <= 50) {
+			setSex(Sex.MALE);
 		} else {
-			setGender("Female");
+			setSex(Sex.FEMALE);
 		}
-		setAilment(Ailment.HEALTHY);
+		if(this.getAge() <= 18) {
+			setOccupation(Occupation.STUDENT);
+		} else {
+			int temp = Occupation.values().length;
+			setOccupation(Occupation.values()[((int)(Math.random()*temp))]);
+		}
 		setInfected(false);
-		if(age >= 18) {
-			occupation = Occupation.values()[ThreadLocalRandom.current().nextInt(1,Occupation.values().length-1)];
-		}
-		else {
-			occupation = Occupation.STUDENT;
-		}
 	}
-	public void exposeToAilment(Ailment a){
-		if(this.health < a.getInfectivity()){
-			if(this.ailment == Ailment.HEALTHY)
-				this.setAilment(a);
-			else{
-				if(this.ailment.getInfectivity() < a.getInfectivity())
-					this.setAilment(a);
-				else{}
-			}
-		}
-	}
+	
+	// HEALTH
+
 	public double getHealth() {
-		return this.health;
+		return health;
 	}
-	
-	public int getAge() {
-		return this.age;
-	}
-	
-	public Name getName() {
-		return this.name;
-	}
-	
-	// A colonist has an occupation until they get a job. 
-	public String getJob() {
-		String output = "";
-		if(this.job != null) {
-			output += this.job;
-			return output;
-		}
-		else {
-			output += this.occupation;
-			return output;
-		}
-	}
-	
-	public String getStatus() {
-		return status;
-	}
-	
+
 	public void setHealth(double health) {
 		this.health = health;
+	}
+	
+	// AGE
+	
+	public int getAge() {
+		return age;
 	}
 	
 	public void setAge(int age) {
 		this.age = age;
 	}
 	
-	public void setName(Name name) {
-		this.name = name;
+	// STATUS
+	
+	public String getStatus() {
+		return status;
 	}
 	
-	public void setJob(Job job) {
-		if(this.occupation != null){
-			this.occupation = null;
-		}
-		this.job = job;
-	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	
-	public String getGender() {
-		return gender;
+	// NAME
+	
+	public Name getName() {
+		return name;
+	}
+	
+	public void setName(Name name) {
+		this.name = name;
+	}
+	
+	// SEX
+	
+	public Sex getSex() {
+		return sex;
+	}
+	
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
+	
+	// OCCUPATION
+	
+	public Occupation getOccupation() {
+		return occupation;
+	}
+	
+	public void setOccupation(Occupation occupation) {
+		this.occupation = occupation;
+	}
+	
+	// JOB
+	
+	public Job getJob() {
+		return job;
+	}
+	
+	public void setJob(Job job) {
+		this.job = job;
+	}
+	
+	// AILMENTS
+	
+	public ArrayList<Ailment> getAilments() {
+		return ailments;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void addAilment(Ailment a) {
+		getAilments().add(a);
 	}
-
-	public Ailment getAilments() {
-		return ailment;
+	
+	public void removeAilment(Ailment a) {
+		for(Ailment z : this.getAilments()) {
+			if(z.equals(a)) {
+				this.getAilments().removeAll(Collections.singleton(a));
+			}
+		}
 	}
-
-	public void setAilment(Ailment ailment) {
-		this.ailment = ailment;
+	
+	public void exposeToAilment(Ailment a) {
+		int ailmentDeterminant = ((int)(Math.random()*41));
+		if(this.getHealth() < a.getInfectivity() && ailmentDeterminant >= 50) {
+			this.addAilment(a);
+		}
 	}
+	
+	// INVENTORY
+	
+	public ArrayList<Items.Item> getInventory() {
+		return inventory;
+	}
+	
+	public void addItemToInventory(Items.Item i) {
+		getInventory().add(i);
+	}
+	
+	// INFECTED
 
 	public boolean isInfected() {
 		return infected;
@@ -120,15 +147,5 @@ public class Colonist {
 	public void setInfected(boolean infected) {
 		this.infected = infected;
 	}
-
-	public int getOccupationTier() {
-		return occupationTier;
-	}
-
-	public void setOccupationTier(int occupationTier) {
-		this.occupationTier = occupationTier;
-	}
-	public void addPossessObject(Items.Item Item){
-		this.posessions.add(Item);
-	}
+	
 }

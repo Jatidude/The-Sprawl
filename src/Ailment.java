@@ -1,7 +1,22 @@
 public enum Ailment {
 
-	HEALTHY, FLU, DYSENTERY, MALARIA, PLAGUE, SMALLPOX, GANGRENE;
+	HEALTHY, FLU, DYSENTERY, MALARIA, SMALLPOX, GANGRENE;
 
+	private String name;
+	
+	static {
+		HEALTHY.name = "Healthy!";
+		FLU.name = "The Flu";
+		DYSENTERY.name = "Dysentery";
+		MALARIA.name = "Malaria";
+		SMALLPOX.name = "Smallpox";
+		GANGRENE.name = "Gangrene";
+	}
+
+	public String getName() {
+		return name;
+	}
+	
 	private double infectivity;
 	
 	static {
@@ -9,29 +24,12 @@ public enum Ailment {
 		FLU.infectivity = 70.0;
 		DYSENTERY.infectivity = 80.0;
 		MALARIA.infectivity = 70.0;
-		PLAGUE.infectivity = 90.0;
 		SMALLPOX.infectivity = 80.0;
 		GANGRENE.infectivity = 70.0;
 	}
 
-	public double getInfectivity(){
+	public double getInfectivity() {
 		return infectivity;
-	}
-	
-	private String name;
-	
-	static {
-		HEALTHY.name = "Healthy!";
-		FLU.name = "The Flu";
-		DYSENTERY.name = "the bloody Flux";
-		MALARIA.name = "the ague";
-		PLAGUE.name = "the Black Plague";
-		SMALLPOX.name = "the Red Plague";
-		GANGRENE.name = "Ergotism";
-	}
-
-	public String getName(){
-		return name;
 	}
 	
 }
