@@ -6,5 +6,5 @@ public enum Job {
 	GATHERER, 
 	PILOT, 
 	SOLDIER, 
-	TEACHER, TRADER
+	TEACHER, TRADER;
 }
