@@ -9,12 +9,17 @@ public class Wanderer extends Colonist implements Unit {
 	
 	public void askToJoinCaravan(Caravan c) {
 		System.out.println("Your caravan " + c.getName() + " comes across a wanderer along their way.");
-		Scanner s = new Scanner(System.in);
-		System.out.println("Accept " + getSex().getPronoun().toLowerCase() + " into your caravan? [Y / N]");
-		if(s.nextLine().equals("Y")) {
-			acceptWanderer(c);
-		} else {
-			revokeWanderer();
+		if(this.getMood().compareTo(Mood.DISHEARTENED) >= 0){}
+			Scanner s = new Scanner(System.in);
+			System.out.println("Accept " + getSex().getPronoun().toLowerCase() + " into your caravan? [Y / N]");
+			if(s.nextLine().equals("Y")) {
+				acceptWanderer(c);
+			} else {
+				revokeWanderer();
+			}
+		}
+		else{
+			this.attackCaravan(c)
 		}
 	}
 	
@@ -25,7 +30,7 @@ public class Wanderer extends Colonist implements Unit {
 	
 	public void revokeWanderer() {
 		setStatus("Still wandering the expanse...");
-		switch((int)(Math.random())*5) { // Make this more comprehensive.
+		switch((int)(Math.random())*4) { // Make this more comprehensive.
 			case 1:
 				setMood(Mood.DISHEARTENED);
 				break;
@@ -36,10 +41,16 @@ public class Wanderer extends Colonist implements Unit {
 			case 3:
 				setMood(Mood.SUICIDAL);
 				break;
+			case 4:
+				setMood(Mood.NEUTRAL);
+				break;
+			default:
+				break;
+
 		}
 	}
 	
-	public void attackCaravan() {
+	public void attackCaravan(Caravan c) {
 		
 	}
 	
