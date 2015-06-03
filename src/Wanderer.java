@@ -35,7 +35,7 @@ public class Wanderer extends Colonist implements Unit {
 				break;
 			case 3:
 				setMood(Mood.SUICIDAL);
-				break;			
+				break;
 		}
 	}
 	

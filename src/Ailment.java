@@ -1,10 +1,11 @@
 public enum Ailment {
 
-	HEALTHY, FLU, DYSENTERY, MALARIA, SMALLPOX, GANGRENE;
+	AIDS, HEALTHY, FLU, DYSENTERY, MALARIA, SMALLPOX, GANGRENE;
 
 	private String name;
 	
 	static {
+		AIDS.name = "AIDS";
 		HEALTHY.name = "Healthy!";
 		FLU.name = "The Flu";
 		DYSENTERY.name = "Dysentery";
@@ -20,6 +21,7 @@ public enum Ailment {
 	private double infectivity;
 	
 	static {
+		AIDS.infectivity = 69.420;
 		HEALTHY.infectivity = 0.0;
 		FLU.infectivity = 70.0;
 		DYSENTERY.infectivity = 80.0;

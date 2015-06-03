@@ -69,6 +69,13 @@ public class Colony extends Runner {
 		this.morale = morale;
 	}
 	
+	public void updateMorale() {
+		for(Colonist c : getColonists()) {
+			c.updateMorale();
+			morale += c.getMorale();
+		}
+	}
+	
 	// COLONISTS
 
 	public ArrayList<Colonist> getColonists() {

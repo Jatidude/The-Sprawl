@@ -13,10 +13,12 @@ import java.net.*;
 * 
 * CARAVAN\getCaravansaryStringArray() -> Nick
 * 
-* WANDERER\revokeWanderer() -> Nick
+* WANDERER\revokeWanderer() -> Jacob
 * 
 * Wanderers -> Evan
 * 	Ideas: You can choose to accept or revoke them into you're caravans once they're embarked.
+*
+* Bigger civilizations have higher disease growth rate.
 * 
 * Moveable Civ-like map; extends beyond the borders of the initial screen. -> Evan
 * 

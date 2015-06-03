@@ -5,6 +5,7 @@ public class Colonist {
 
 	private double health;
 	private int age;
+	private int morale;
 	private String status;
 	private Name name;
 	private Mood mood;
@@ -54,6 +55,16 @@ public class Colonist {
 	
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	// MORALE
+	
+	public int getMorale() {
+		return morale;
+	}
+	
+	public void updateMorale() {
+		morale += 1; // Change this.
 	}
 	
 	// STATUS
