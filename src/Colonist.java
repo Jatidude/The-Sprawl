@@ -7,18 +7,21 @@ public class Colonist {
 	private int age;
 	private String status;
 	private Name name;
+	private Mood mood;
 	private Sex sex;
 	private Occupation occupation; // A colonist's occupation was the job they held before the outbreak.
 	private Job job; // A colonist's job is the current role the colonist holds in the colony.
 	private ArrayList<Ailment> ailments = new ArrayList<Ailment>();
 	private ArrayList<Items.Item> inventory = new ArrayList<Items.Item>();
 	private boolean infected;
+	// private Nature nature;
 	
 	public Colonist() {
 		setHealth(100.0);
 		setAge(((int)(Math.random()*41))+18);
 		setStatus("Idle");
 		setName(Name.values()[((int)(Math.random()*101))]);
+		setMood(Mood.NEUTRAL); // Maybe change this later.
 		if(getName().ordinal() <= 50) {
 			setSex(Sex.MALE);
 		} else {
@@ -72,6 +75,16 @@ public class Colonist {
 	public void setName(Name name) {
 		this.name = name;
 	}
+	
+	// MOOD
+	
+		public Mood getMood() {
+			return mood;
+		}
+		
+		public void setMood(Mood mood) {
+			this.mood = mood;
+		}
 	
 	// SEX
 	

@@ -8,8 +8,15 @@ import java.net.*;
 
 /* To Be Completed:
 * 
-* Occupation stats bonuses. -> Nick
-* 	Ideas: Use variables, statics, and getters in the Occupation enum.
+* Occupation, Nature, and Mood stats bonuses. -> Nick
+* 	Ideas: Use variables, statics, and getters in the Occupation, Nature, and Mood enums.
+* 
+* CARAVAN\getCaravansaryStringArray() -> Nick
+* 
+* WANDERER\revokeWanderer() -> Nick
+* 
+* Wanderers -> Evan
+* 	Ideas: You can choose to accept or revoke them into you're caravans once they're embarked.
 * 
 * Moveable Civ-like map; extends beyond the borders of the initial screen. -> Evan
 * 
@@ -18,6 +25,7 @@ import java.net.*;
 * Make dank memes -> Connor
 * 
 * Determine way to calculate colony morale and wealth. -> Josh
+* 	Ideas: Create individual colonist morale and the colony's morale is the summation of its parts.
 * 
 */
 
@@ -64,9 +72,6 @@ public class Runner extends JApplet implements Runnable, KeyListener, MouseListe
 		capitalY.add(gameSizeY/2 - 30);
 		capitalWidth.add(30);
 		capitalHeight.add(30);
-		for(Colonist a : c.getColonists()) {
-			System.out.println(a.getAge());
-		}
 	}
 	
 	public void addAI() {

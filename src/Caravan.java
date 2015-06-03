@@ -69,6 +69,17 @@ public class Caravan implements Unit {
 			}
 			return ans;
 		}
+		
+		// Returns the names of all caravaneers as an array of strings.
+		// Not working at the moment.
+		public String[] getCaravansaryStringArray() {
+			String[] arr = new String[getCaravansary().size()];
+			for(int i=0; i<getCaravansary().size(); i++) {
+				arr[i] = "" + getCaravansary().get(i).getName();
+			}
+			return arr;
+		}
+		
 	
 	public void addColonistToCaravan(Colonist c) {
 		getCaravansary().add(c);
