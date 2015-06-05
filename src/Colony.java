@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Colony extends Runner {
+public class Colony {
 	
 	private String name;
 	private int population;
