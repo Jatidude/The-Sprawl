@@ -24,8 +24,6 @@ import java.net.*;
 * 
 * Find way to overload methods to take non-vital parameters but not rewrite them a bunch of times. -> Jacob
 * 
-* Make dank memes -> Connor
-* 
 * Determine way to calculate colony morale and wealth. -> Josh
 * 	Ideas: Create individual colonist morale and the colony's morale is the summation of its parts.
 * 
@@ -39,21 +37,14 @@ public class Runner extends JApplet implements Runnable, KeyListener, MouseListe
 	URL url;
 	public int gameSizeX = 1350;
 	public int gameSizeY = 660;
-	Colony c;
-	Colony ai;
-	
-	public ArrayList<Integer> capitalX = new ArrayList<Integer>();
-	public ArrayList<Integer> capitalY = new ArrayList<Integer>();
-	public ArrayList<Integer> capitalWidth = new ArrayList<Integer>();
-	public ArrayList<Integer> capitalHeight = new ArrayList<Integer>();
+	Polygon p;
+	int draw = 4;
+	int test = 0;
+	Point centers;
+	public int polyWidth = 50, polyHeight = 50;
 	
 	// Motion Booleans
 	public boolean left, right, up, down; 
-	
-	//AI added
-	public int added = 0;
-	public int max = 4;
-	String name;
 	
 	// Runs init first, then start, then run.
 	public void init() {
@@ -69,48 +60,11 @@ public class Runner extends JApplet implements Runnable, KeyListener, MouseListe
 	}
 	
 	public void start() {
-		c = new Colony("Deep Run", 16);
-		capitalX.add(gameSizeX/2 - 30);
-		capitalY.add(gameSizeY/2 - 30);
-		capitalWidth.add(30);
-		capitalHeight.add(30);
-	}
-	
-	public void addAI() {
-		int rand = ((int)(Math.random()*12)+1);
-		if (rand == 1) {
-			name = "1";
-		} else if (rand == 2) {
-			name = "2";
-		} else if (rand == 3) {
-			name = "3";
-		} else if (rand == 4) {
-			name = "4";
-		} else if (rand == 5) {
-			name = "5";
-		} else if (rand == 6) {
-			name = "6";
-		} else if (rand == 7) {
-			name = "7";
-		} else if (rand == 8) {
-			name = "8";
-		} else if (rand == 9) {
-			name = "9";
-		} else if (rand == 10) {
-			name = "10";
-		} else if (rand == 11) {
-			name = "11";
-		}
-		c = new Colony(name, 16);
-		c.addColonist(new Colonist());
-		capitalX.add((int)(Math.random()*1320)+1);
-		capitalY.add((int)(Math.random()*1320)+1);
-		capitalWidth.add(30);
-		capitalHeight.add(30);
+		
 	}
 	
 	public void run() {
-		while (true) {
+		while(true) {
 			repaint();
 			try {
 				Thread.sleep(17);
@@ -121,80 +75,80 @@ public class Runner extends JApplet implements Runnable, KeyListener, MouseListe
 	}
 	
 	public void paint(Graphics g) {
-		paintColony(g, c, 0);
-		for (int i = 1; i < max; i++) {
-			addAI();
-			paintColony(g, c, i);
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(4));
+		for(int k=0; k<8; k++) {
+			test = (k*100)+50;
+			for (int j=1; j<=15; j++) {
+					p = new Polygon();
+					for(int i = 0; i < 6; i++) {
+						if (((k % 2) == 0) && (j*90 < 1350)) {
+							p.addPoint((int) (((j*90)) + polyWidth * Math.sin(i * 2 * Math.PI / 6)), (int) (test - draw + polyHeight * Math.cos(i * 2 * Math.PI / 6)));
+						} else if (((k % 2) != 0) && (j*90 <= 1350)) {
+							p.addPoint((int) (((j*90)) - 45 + polyWidth * Math.sin(i * 2 * Math.PI / 6)), (int) (test - draw + polyHeight * Math.cos(i * 2 * Math.PI / 6)));
+						}
+					}
+				g.drawPolygon(p);
+			}
+			draw+=polyHeight/2;
 		}
 	}
-	
-	public void paintColony(Graphics g, Colony c, int i) {
-		g.setColor(Color.BLUE);
-		g.fillRect(capitalX.get(i), capitalY.get(i), capitalWidth.get(i), capitalHeight.get(i));
-		int stringLen = (int)g.getFontMetrics().getStringBounds(c.getName(), g).getWidth();
-		int start = 30/2 - stringLen/2;
-		g.drawString(String.valueOf(c.getName()), start + capitalX.get(i), capitalY.get(i) - 10);
-	}
 
-	public void keyPressed(KeyEvent e) {
-		
-		//code for beginning motion
-		/*
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+	public void keyPressed(KeyEvent k) { 
+		/* Beginning Motion
+		if(k.getKeyCode() == KeyEvent.VK_RIGHT) {
             right = true;
-        }if (e.getKeyCode() == KeyEvent.VK_LEFT){
+        }if(k.getKeyCode() == KeyEvent.VK_LEFT) {
             left = true;
-        }if (e.getKeyCode() == KeyEvent.VK_UP){
+        }if(k.getKeyCode() == KeyEvent.VK_UP) {
             up = true;
-        }if (e.getKeyCode() == KeyEvent.VK_DOWN){
+        }if(k.getKeyCode() == KeyEvent.VK_DOWN) {
             down = true;
         }
         */
         
 	}
 	
-	public void keyReleased(KeyEvent e) {
-		
-		//code for stopping motion
-		/*
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT){
+	public void keyReleased(KeyEvent k) {
+		/* Stopping Motion
+		if(k.getKeyCode() == KeyEvent.VK_RIGHT) {
             right = false;
-        }if (e.getKeyCode() == KeyEvent.VK_LEFT){
+        }if(k.getKeyCode() == KeyEvent.VK_LEFT) {
             left = false;
-        }if (e.getKeyCode() == KeyEvent.VK_UP){
+        }if(k.getKeyCode() == KeyEvent.VK_UP) {
             up = false;
-        }if (e.getKeyCode() == KeyEvent.VK_DOWN){
+        }if(k.getKeyCode() == KeyEvent.VK_DOWN) {
             down = false;
         }
         */
 	}
 	
-	public void keyTyped(KeyEvent e) {
+	public void keyTyped(KeyEvent k) {
 		
 	}
 	
-	public void mouseReleased(MouseEvent b) {
+	public void mouseReleased(MouseEvent m) {
 		
 	}
 	
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent m) {
 		
 	}
 	
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(MouseEvent m) {
 		
 	}
 	
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(MouseEvent m) {
 		
 	}
 	
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(MouseEvent m) {
 		
 	}
 	
 	public void update(Graphics g) {
-		// DO NOT EDIT THIS METHOD
+		// Final Method
 		if (i == null) {
 			i = createImage(this.getWidth(), this.getHeight());
 			doubleG = i.getGraphics();
