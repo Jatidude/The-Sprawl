@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class Colony {
 	
@@ -6,6 +7,8 @@ public class Colony {
 	private int population;
 	private int wealth;
 	private int morale;
+	private int aModifier;
+	private ArrayList<Point> territory = new ArrayList<Point>();
 	private ArrayList<Colonist> colonists = new ArrayList<Colonist>();
 	private ArrayList<Items.Item> stockpile = new ArrayList<Items.Item>();
 
@@ -48,6 +51,27 @@ public class Colony {
 	public void setPopulation(int population) {
 		this.population = population;
 	}
+
+	// TERRITORY
+
+	public ArrayList<Point> getTerritory() {
+		return territory;
+	}
+
+	public void addTerritory(Point p){
+		getTerritory().add(p);
+		calcDensity();
+	}
+
+	// DISEASE
+
+	public void calcDensity() {
+		aModifier = (population/territory.size())
+	}
+
+	public int getModifier(){
+		return this.aModifier;
+	}
 	
 	// WEALTH
 	
@@ -84,6 +108,8 @@ public class Colony {
 
 	public void addColonist(Colonist c) {
 		getColonists().add(c);
+		population++
+		calcDensity();
 	}
 	
 	// STOCKPILE

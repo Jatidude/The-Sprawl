@@ -29,9 +29,11 @@ public enum Ailment {
 		SMALLPOX.infectivity = 80.0;
 		GANGRENE.infectivity = 70.0;
 	}
-
 	public double getInfectivity() {
 		return infectivity;
 	}
+		public double getInfectivity(Colony c) {
+			return infectivity*c.getModifier();
+		}
 	
 }
