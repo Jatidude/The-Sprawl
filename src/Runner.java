@@ -94,6 +94,10 @@ public class Runner extends JApplet implements Runnable, KeyListener, MouseListe
 		}
 	}
 
+	public void generateWorld() {
+		// Generate so many of each lootable item so that their respective "worths" can be calculated.
+	}
+
 	public void keyPressed(KeyEvent k) { 
 		/* Beginning Motion
 		if(k.getKeyCode() == KeyEvent.VK_RIGHT) {

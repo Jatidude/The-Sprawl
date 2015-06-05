@@ -13,4 +13,15 @@ public enum LootableMaterial implements Item {
 		return name;
 	}
 
+	private int worth;
+
+	// Generate so many of each lootable material in the world.	
+	static {
+		PISTOL.worth = 10.0; // Temporary value
+	}
+
+	public String getWorth() {
+		return worth;
+	}
+
 }
