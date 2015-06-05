@@ -14,7 +14,7 @@ import java.net.*;
 * CARAVAN\getCaravansaryStringArray() -> Nick
 * 
 * WANDERER\revokeWanderer() -> Jacob
-* 
+*
 * Wanderers -> Evan
 * 	Ideas: You can choose to accept or revoke them into you're caravans once they're embarked.
 *
