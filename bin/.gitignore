@@ -1,5 +1,3 @@
-/HavingStatus.class
-/GameEntitiy.class
 /Ailment$1.class
 /Ailment$2.class
 /Ailment$3.class
@@ -7,3 +5,6 @@
 /Ailment$5.class
 /Ailment$6.class
 /Item.class
+/RawMaterial.class
+/RefinedMaterial.class
+/Items/

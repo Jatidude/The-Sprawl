@@ -1,74 +1,125 @@
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class Colony {
 	
 	private String name;
-	public ArrayList<Colonist> colonists = new ArrayList<Colonist>();
-	public ArrayList<Item> stock = new ArrayList<Item>();
 	private int population;
 	private int wealth;
-	private int happiness;
-	
-	public Colony() {
-		this.name = "The Colony";
-		this.population = 1;
-		for(int i=0; i<p; i++) {
-			colonists.add(new Colonist());
-		}
-		this.wealth = calculateWealth();
-		this.happiness = calculateHappiness();
-	}
-	
-	public Colony(String n, int p) {
-		this.name = setName(n);
-		this.population = setPopulation(p);
-		for(int i=0; i<p; i++) {
-			colonists.add(new Colonist());
-		}
-		this.wealth = calculateWealth();
-		this.happiness = calculateHappiness();	
-	}
-	
-	public int calculateHappiness() {
-		happiness = 0;
-		return happiness;
-	}
-	
-	public int calculateWealth() {
-		wealth = 0;
-		return wealth;
-	}
+	private int morale;
+	private int aModifier;
+	private ArrayList<Point> territory = new ArrayList<Point>();
+	private ArrayList<Colonist> colonists = new ArrayList<Colonist>();
+	private ArrayList<Items.Item> stockpile = new ArrayList<Items.Item>();
 
+	public Colony() {
+		setName("The Colony");
+		setPopulation(1);
+		for(int i=0; i<getPopulation(); i++) {
+			colonists.add(new Colonist());
+		}
+		wealth = getPopulation();
+		morale = getPopulation();
+	}
+	
+		public Colony(String name, int population) {
+			setName(name);
+			setPopulation(population);
+			for(int i=0; i<getPopulation(); i++) {
+				colonists.add(new Colonist());
+			}
+			wealth = getPopulation();
+			morale = getPopulation();
+		}
+	
+	// NAME
+	
 	public String getName() {
 		return name;
 	}
-	
-	public int getPopulation() {
-		return this.population;
-	}
-	
-	public int getHappiness() {
-		return this.happiness;
-	}
-	
-	public int getWealth() {
-		return this.wealth;
-	}
-	
+
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	// POPULATION
+	
+	public int getPopulation() {
+		return population;
 	}
 	
 	public void setPopulation(int population) {
 		this.population = population;
 	}
+
+	// TERRITORY
+
+	public ArrayList<Point> getTerritory() {
+		return territory;
+	}
+
+	public void addTerritory(Point p){
+		getTerritory().add(p);
+		calcDensity();
+	}
+
+	// DISEASE
+
+	public void calcDensity() {
+		aModifier = (population/territory.size())
+	}
+
+	public int getModifier(){
+		return this.aModifier;
+	}
 	
-	public void setHappiness(int happiness) {
-		this.happiness = calculateHappiness();
+	// WEALTH
+	
+	public int getWealth() {
+		return wealth;
 	}
 	
 	public void setWealth(int wealth) {
-		this.wealth = calculateWealth();
+		this.wealth = wealth;
+	}
+	
+	// MORALE
+	
+	public int getMorale() {
+		return morale;
+	}
+	
+	public void setMorale(int morale) {
+		this.morale = morale;
+	}
+	
+	public void updateMorale() {
+		for(Colonist c : getColonists()) {
+			c.updateMorale();
+			morale += c.getMorale();
+		}
+	}
+	
+	// COLONISTS
+
+	public ArrayList<Colonist> getColonists() {
+		return colonists;
+	}
+
+	public void addColonist(Colonist c) {
+		getColonists().add(c);
+		population++
+		calcDensity();
+	}
+	
+	// STOCKPILE
+	
+	public ArrayList<Items.Item> getStockpile() {
+		return stockpile;
+	}
+	
+	public void addItemToStockpile(Items.Item i) {
+		getStockpile().add(i);
 	}
 	
 }
