@@ -4,13 +4,15 @@ public enum Mood {
 	public int value;
 	
 	static {
-		SUICIDAL.value = -90;
-		HOSTILE.value = -70;
-		DISHEARTENED.value = -20;
-		NEUTRAL.value = 0;
-		GLAD.value = 20;
-		HAPPY.value = 70;
-		JUBILANT.value = 90;
+		SUICIDAL.value = -90;       //Unit may kill themeselves
+		HOSTILE.value = -70;        //Unit may attack others unrprovoked
+        AGITATED.value = -50;       //Unit is angry and unhappy
+		DISHEARTENED.value = -20;   //Unit is mildly glum
+		NEUTRAL.value = 0;          //No strong feelings
+		CONTENT.value = 20;         //Generally happy
+        GLAD.value = 50;            //Overtly happy
+		HAPPY.value = 70;           //Outwardly cheery and untroubled
+		JUBILANT.value = 90;        //Not a care in the world. Might not have noticed the apocalypse
 	}
 
 	public void /* int */ compareTo() {

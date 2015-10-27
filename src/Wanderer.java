@@ -31,9 +31,11 @@ public class Wanderer extends Colonist implements Unit {
 	public void revokeWanderer(Caravan c) {
 		setStatus("Still wandering the expanse...");
 		switch((int)(Math.random())*4) { // Make this more comprehensive.
-			case 1:
-				setMood(Mood.DISHEARTENED);
+			case 0:
+				setMood(Mood.NEUTRAL);
 				break;
+            case 1:
+                setMood(Mood.DISHEARTENED);
 			case 2:
 				setMood(Mood.HOSTILE);
 				attackCaravan(c);
@@ -42,7 +44,7 @@ public class Wanderer extends Colonist implements Unit {
 				setMood(Mood.SUICIDAL);
 				break;
 			case 4:
-				setMood(Mood.NEUTRAL);
+				setMood(Mood.AGITATED);
 				break;
 			default:
 				break;
